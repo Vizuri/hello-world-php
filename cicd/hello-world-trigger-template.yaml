@@ -6,7 +6,6 @@ spec:
  params:
  - name: gitrevision
  - name: gitrepositoryurl
- - name: pull_request_title
  resourcetemplates:
  - apiVersion: tekton.dev/v1beta1
    kind: PipelineRun
@@ -25,8 +24,6 @@ spec:
            - name: url
              value: $(params.gitrepositoryurl)
      Params:
-       - name: title
-         value: $(params.pull_request_title)
        - name: revision
          value: $(params.gitrevision)
        - name: url
