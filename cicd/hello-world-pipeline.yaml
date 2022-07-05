@@ -7,6 +7,8 @@ metadata:
     pipeline.openshift.io/runtime: php
     pipeline.openshift.io/type: kubernetes
 spec:   
+  workspaces:
+    - name: workspace
   params:
     - default: hello-world
       name: APP_NAME
@@ -15,7 +17,7 @@ spec:
     - name: GIT_REPO
       type: string
       description: url of the git repo for the code of deployment
-    - default: main
+    - default: master
       name: GIT_REVISION
       type: string
       description: revision to be used from repo of the code for deployment
@@ -68,7 +70,7 @@ spec:
       params:
       - name: charts_dir
         value: cicd/helm/hello-world-php
-      - name: releases_version
+      - name: release_version
         value: v1.0.0
       - name: release_name
         value: hello-world-php
@@ -80,12 +82,3 @@ spec:
       workspaces:
         - name: source
           workspace: workspace
-  workspaces:
-    - name: workspace
-      volumeClaimTemplate:
-        spec:
-          accessModes:
-            - ReadWriteOnce
-          resources:
-            requests:
-              storage: 500Mi
