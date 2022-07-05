@@ -15,9 +15,9 @@ spec:
         - name: "eventTypes"
           value: ["push"]
   bindings:
-    - ref: hello-world-php
+    - ref: hello-world-php-pipeline-binding
   template:
-    ref: hello-world-php
+    ref: hello-world-php-trigger-pipeline-template
 ---
 apiVersion: v1
 kind: Secret
