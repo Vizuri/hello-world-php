@@ -13,7 +13,7 @@ spec:
      generateName: hello-world-php-app-run-pr-tr-
    spec:
      pipelineRef:
-       name: hello-world-php-app
+       name: build-and-deploy-hello-world-app
      resources:
        - name: app-source
          resourceSpec:
