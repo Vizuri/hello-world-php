@@ -1,8 +1,8 @@
-apiVersion: triggers.tekton.dev/v1alpha1
+apiVersion: triggers.tekton.dev/v1beta1
 kind: EventListener
 metadata:
- name: hello-world-php-GitHub-listener-interceptor
+  name: hello-world-php
 spec:
- serviceAccountName: pipeline
- triggers:
-   - triggerRef: hello-world-php-trigger
+  serviceAccountName: pipeline
+  triggers:
+    - triggerRef: hello-world-php-trigger

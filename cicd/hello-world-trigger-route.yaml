@@ -10,4 +10,4 @@ spec:
     targetPort: http-listener
   to:
     kind: Service
-    name: el-hello-world-php-github-listener-interceptor
+    name: el-hello-world-php
