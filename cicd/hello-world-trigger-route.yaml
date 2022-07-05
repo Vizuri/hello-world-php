@@ -1,0 +1,13 @@
+
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    eventlistener: hello-world-php-github-listener-interceptor
+  name: hello-world-php-github-listener-el
+spec:
+  port:
+    targetPort: http-listener
+  to:
+    kind: Service
+    name: el-hello-world-php-github-listener-interceptor

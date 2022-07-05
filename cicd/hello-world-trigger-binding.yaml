@@ -1,0 +1,12 @@
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: TriggerBinding
+metadata:
+ name: hello-world-php-pipeline-binding
+spec:
+ params:
+ - name: gitrevision
+   value: $(body.pull_request.head.sha)
+ - name: gitrepositoryurl
+   value: $(body.repository.html_url)
+ - name: pull_request_title
+   value: $(body.pull_request.title)

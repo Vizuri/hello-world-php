@@ -1,0 +1,33 @@
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: TriggerTemplate
+metadata:
+ name: hello-world-php-trigger-pipeline-template
+spec:
+ params:
+ - name: gitrevision
+ - name: gitrepositoryurl
+ - name: pull_request_title
+ resourcetemplates:
+ - apiVersion: tekton.dev/v1beta1
+   kind: PipelineRun
+   metadata:
+     generateName: hello-world-php-app-run-pr-tr-
+   spec:
+     pipelineRef:
+       name: hello-world-php-app
+     resources:
+       - name: app-source
+         resourceSpec:
+           type: git
+           params:
+           - name: revision
+             value: $(params.gitrevision)
+           - name: url
+             value: $(params.gitrepositoryurl)
+     Params:
+       - name: title
+         value: $(params.pull_request_title)
+       - name: revision
+         value: $(params.gitrevision)
+       - name: url
+         value: $(params.gitrepositoryurl)
