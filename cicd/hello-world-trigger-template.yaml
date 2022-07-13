@@ -21,5 +21,5 @@ spec:
      Params:
        - name: revision
          value: $(params.gitrevision)
-       - name: url
+       - name: GIT_URL
          value: $(params.gitrepositoryurl)
