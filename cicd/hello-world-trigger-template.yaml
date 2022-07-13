@@ -14,15 +14,10 @@ spec:
    spec:
      pipelineRef:
        name: build-and-deploy-hello-world-app
-     resources:
-       - name: app-source
-         resourceSpec:
-           type: git
-           params:
-           - name: revision
-             value: $(params.gitrevision)
-           - name: url
-             value: $(params.gitrepositoryurl)
+     workspaces:
+        - name: workspace
+          persistentVolumeClaim:
+            claimName: workspace-pvc
      Params:
        - name: revision
          value: $(params.gitrevision)
