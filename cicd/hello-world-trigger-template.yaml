@@ -16,8 +16,13 @@ spec:
        name: build-and-deploy-hello-world-app
      workspaces:
         - name: workspace
-          persistentVolumeClaim:
-            claimName: workspace-pvc
+          volumeClaimTemplate: 
+          spec:
+            accessModes:
+              - ReadWriteOnce
+            resources:
+              requests:
+                storage: 1Gi
      Params:
        - name: GIT_REVISION
          value: $(tt.params.gitrevision)
