@@ -10,4 +10,4 @@ spec:
           ref:  hello-world-php-pipeline-binding
       name: hello-world-php
       template:
-        ref: hello-world-php-trigger
+        ref: hello-world-php-trigger-pipeline-template
