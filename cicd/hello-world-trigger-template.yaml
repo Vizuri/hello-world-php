@@ -19,7 +19,7 @@ spec:
           persistentVolumeClaim:
             claimName: workspace-pvc
      Params:
-       - name: revision
+       - name: GIT_REVISION
          value: $(params.gitrevision)
        - name: GIT_REPO
          value: $(params.gitrepositoryurl)
