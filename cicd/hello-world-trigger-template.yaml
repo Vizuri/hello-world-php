@@ -20,6 +20,6 @@ spec:
             claimName: workspace-pvc
      Params:
        - name: GIT_REVISION
-         value: $(params.gitrevision)
+         value: $(tt.params.gitrevision)
        - name: GIT_REPO
-         value: $(params.gitrepositoryurl)
+         value: $(tt.params.gitrepositoryurl)

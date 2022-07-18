@@ -5,4 +5,9 @@ metadata:
 spec:
   serviceAccountName: pipeline
   triggers:
-    - triggerRef: hello-world-php-trigger
+    - bindings:
+        - kind: TriggerBinding
+          ref:  hello-world-php-pipeline-binding
+      name: hello-world-php
+      template:
+        ref: hello-world-php-trigger

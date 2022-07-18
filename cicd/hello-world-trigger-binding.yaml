@@ -6,3 +6,5 @@ spec:
  params:
  - name: gitrepositoryurl
    value: $(body.repository.html_url)
+ - name: gitrevision
+   value: $(body.after)
