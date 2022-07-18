@@ -1,3 +1,4 @@
+oc apply  -f hello-world-pipeline.yaml
 oc apply  -f hello-world-trigger-binding.yaml
 oc apply  -f hello-world-trigger-template.yaml
 oc apply  -f hello-world-trigger-trigger.yaml
