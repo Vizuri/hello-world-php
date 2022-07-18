@@ -28,3 +28,4 @@ spec:
          value: $(tt.params.gitrevision)
        - name: GIT_REPO
          value: $(tt.params.gitrepositoryurl)
+         
