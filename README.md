@@ -1,6 +1,6 @@
 # hello-world-php
 
-The hello-world-php is a demonstration project that shows the steps to create an openshift-pipelines (tekton) CI/CD job to build and deploy a PHP appliction on OpenShift.    Test2
+The hello-world-php is a demonstration project that shows the steps to create an openshift-pipelines (tekton) CI/CD job to build and deploy a PHP appliction on OpenShift.    Test3
 
 The simple pipeline perform the following tasks.
 

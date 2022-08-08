@@ -25,6 +25,10 @@ spec:
       name: IMAGE_NAME
       type: string
       description: image to be built from the code
+    - default: latest
+      name: RELEASE_VERSION
+      type: string
+      description: revision version of the deployment
     - default: .
       name: PATH_CONTEXT
       type: string
@@ -51,7 +55,7 @@ spec:
     - name: build
       params:
         - name: IMAGE
-          value: $(params.IMAGE_NAME)
+          value: $(params.IMAGE_NAME):$(params.RELEASE_VERSION)
         - name: TLSVERIFY
           value: 'false'
         - name: PATH_CONTEXT

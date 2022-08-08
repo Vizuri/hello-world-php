@@ -6,7 +6,7 @@ metadata:
     eventlistener: hello-world-php-github-listener-interceptor
   name: hello-world-php-github-listener-el
 spec:
-  host: el-hello-world-php.apps-external.k8s-lab.it.tufts.edu
+  host: el-test-hello-world-php.apps-external.k8s-lab.it.tufts.edu
   port:
     targetPort: http-listener
   to:

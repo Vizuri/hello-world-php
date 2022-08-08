@@ -1,4 +1,4 @@
-apiVersion: triggers.tekton.dev/v1beta1
+apiVersion: triggers.tekton.dev/v1alpha1
 kind: EventListener
 metadata:
   name: hello-world-php
@@ -9,5 +9,12 @@ spec:
         - kind: TriggerBinding
           ref:  hello-world-php-pipeline-binding
       name: hello-world-php
+      interceptors:
+        - cel:
+            filter: >-
+              (header.match('X-GitHub-Event', 'push') && body.ref.startsWith('refs/heads/Release'))
+            overlays:
+            - key: release_version
+              expression: "body.ref.split('/')[3]"  
       template:
         ref: hello-world-php-trigger-pipeline-template
