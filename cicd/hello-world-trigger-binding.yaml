@@ -9,4 +9,4 @@ spec:
  - name: gitrevision
    value: $(body.ref)
  - name: releaseversion
-   value: $(release_version)
+   value: $(extensions.release_version)
