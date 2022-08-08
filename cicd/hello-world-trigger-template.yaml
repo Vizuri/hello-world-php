@@ -6,6 +6,7 @@ spec:
  params:
  - name: gitrevision
  - name: gitrepositoryurl
+ - name: releaseversion
  resourcetemplates:
  - apiVersion: tekton.dev/v1beta1
    kind: PipelineRun
@@ -29,3 +30,5 @@ spec:
          value: $(tt.params.gitrevision)
        - name: GIT_REPO
          value: $(tt.params.gitrepositoryurl)
+       - name: RELEASE_VERSION
+         value: $(tt.params.releaseversion)

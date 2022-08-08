@@ -7,4 +7,6 @@ spec:
  - name: gitrepositoryurl
    value: $(body.repository.html_url)
  - name: gitrevision
-   value: $(body.after)
+   value: $(body.ref)
+ - name: releaseversion
+   value: $(release_version)
