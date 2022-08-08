@@ -12,7 +12,7 @@ spec:
       interceptors:
         - cel:
             filter: >-
-              (header.match('X-GitHub-Event', 'push') && body.ref.startsWith('refs/heads/Release'))
+              (header.match('X-GitHub-Event', 'push') && body.ref.startsWith('refs/heads/release'))
             overlays:
             - key: release_version
               expression: "body.ref.split('/')[3]"  
