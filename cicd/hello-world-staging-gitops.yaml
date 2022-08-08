@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: staging-hello-world-php
+  namespace: openshift-gitops
+spec:
+  project: default
+  source:
+    chart: hello-world-php
+    repoURL: https://github.com/Vizuri/hello-world-php.git
+    path: cicd/helm
+    targetRevision: 1.0.0
+    helm:
+      releaseName: hello-world-php
+      parameters:
+        - name: image.tag
+          value: '1.0'
+  destination:
+    namespace: staging-hello-world-php
+    server: 'https://kubernetes.default.svc'

@@ -1,0 +1,49 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: uat-cd-pipeline
+spec:
+  params:
+    - description: Git commitId of the change to deploy
+      name: IMAGE_TAG
+      type: string
+    - default: >-
+        image-registry.openshift-image-registry.svc:5000/test-hello-world-php/hello-world
+      description: Source image url without tag
+      name: SRC_IMAGE_URL
+      type: string
+    - default: 'image-registry.openshift-image-registry.svc:5000/staging-hello-world-php/hello-world'
+      description: Destination image url without tag
+      name: DEST_IMAGE_URL
+      type: string
+    - default: 'https://gitlab.xxx.xxxx.xxx.ca/tekton-pipeline.git'
+      description: Kustomize git repo for CD
+      name: KUSTOMIZE_GIT_URL
+      type: string
+    - default: k8s/overlays/uat
+      description: Kustomize git repo context directory for CD
+      name: KUSTOMIZE_GIT_CONTEXT_DIR
+      type: string
+    - default: uat
+      description: Kustomize git repo branch
+      name: KUSTOMIZE_GIT_BRANCH
+      type: string
+  tasks:
+    - name: skopeo-copy
+      params:
+        - name: srcImageURL
+          value: 'docker://$(params.SRC_IMAGE_URL):$(params.IMAGE_TAG)'
+        - name: destImageURL
+          value: 'docker://$(params.DEST_IMAGE_URL):$(params.IMAGE_TAG)'
+        - name: srcTLSverify
+          value: 'false'
+        - name: destTLSverify
+          value: 'false'
+      taskRef:
+        kind: ClusterTask
+        name: skopeo-copy
+      workspaces:
+        - name: images-url
+          workspace: images-url
+  workspaces:
+    - name: images-url
