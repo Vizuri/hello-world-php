@@ -6,15 +6,24 @@ metadata:
 spec:
   project: default
   source:
-    chart: hello-world-php
     repoURL: https://github.com/Vizuri/hello-world-php.git
-    path: cicd/helm
-    targetRevision: 1.0.0
-    helm:
-      releaseName: hello-world-php
-      parameters:
-        - name: image.tag
-          value: '1.0'
+    path: cicd/helm/hello-world-php
+    targetRevision: develop
   destination:
     namespace: staging-hello-world-php
     server: 'https://kubernetes.default.svc'
+  sync:
+    comparedTo:
+      destination:
+        namespace: staging-hello-world-php
+        server: https://kubernetes.default.svc
+      source:
+        path: cicd/helm/hello-world-php/
+        repoURL: https://github.com/Vizuri/hello-world-php.git
+        targetRevision: develop
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
