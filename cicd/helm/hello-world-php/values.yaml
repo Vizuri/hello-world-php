@@ -8,7 +8,7 @@ image:
   repository: image-registry.openshift-image-registry.svc:5000/staging-hello-world-php/hello-world
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "1.1"
+  tag: "1.0"
 
 imagePullSecrets: []
 nameOverride: ""

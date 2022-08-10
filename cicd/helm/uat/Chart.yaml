@@ -1,0 +1,10 @@
+---
+apiVersion: v2
+name: hello-world-staging
+type: application
+version: 1.0.0
+appVersion: "1.0.0"
+dependencies:
+- name: hello-world-phpx
+  version: 0.1.0
+  repository: file://../hello-world-phpx
